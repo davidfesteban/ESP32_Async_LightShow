@@ -18,7 +18,7 @@ EspMQTTClient client(
   ssid,
   password,
   mqtt_server,
-  "TestClient3344kaWrt",
+  "TestClient3344kaWrt67",
   1883);
 
 void setup() {
@@ -28,9 +28,10 @@ void setup() {
 
   createTask();
   dataQueue = xQueueCreate(QUEUE_SIZE, sizeof(String));
+  setupAnimation();
 
   if (dataQueue == NULL) {
-    Serial.println("Queue creation failed");
+    //Serial.println("Queue creation failed");
     return;
   }
 }
@@ -83,5 +84,6 @@ void loop() {
   //delay(3000);
   //Serial.println("Beat " + String(millis()));
   //delay(3000);
+  digitalWrite(LED_PIN, HIGH);
   client.loop();
 }
