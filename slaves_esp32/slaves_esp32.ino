@@ -25,22 +25,21 @@ void setup() {
   Serial.begin(115200);
   pinMode(LED_PIN, OUTPUT);
 
-
   createTask();
   dataQueue = xQueueCreate(QUEUE_SIZE, sizeof(String));
   setupAnimation();
 
   if (dataQueue == NULL) {
-    //Serial.println("Queue creation failed");
+    Serial.println("Queue creation failed");
     return;
   }
 }
 
-// Animation Task
+
 void createTask() {
   xTaskCreate(
-    animations,        // Task function
-    "Animation LEDs",  // Name for debugging
+    animationCommander,        // Task function
+    "Animation Commander LEDs",  // Name for debugging
     2048,              // Stack size (bytes)
     NULL,              // Parameter to pass
     1,                 // Task priority
@@ -81,9 +80,5 @@ void onConnectionEstablished() {
 }
 
 void loop() {
-  //delay(3000);
-  //Serial.println("Beat " + String(millis()));
-  //delay(3000);
-  digitalWrite(LED_PIN, HIGH);
   client.loop();
 }
