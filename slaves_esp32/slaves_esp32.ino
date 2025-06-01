@@ -4,7 +4,7 @@
 #include "EspMQTTClient.h"
 #include <Arduino.h>
 
-const char* ssid = "Oftersheim";
+const char* ssid = "Naive";
 const char* password = "NaiveTardis";
 const char* mqtt_server = "91.121.93.94";  //test.mosquitto.org
 const String device = "TOM";
